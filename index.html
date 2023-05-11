@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поиск пропавших животных</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h2>Поиск пропавших животных</h2>
+    </div>
+    <div class="content">
+        <h3>Список животных</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Вид животных</th>
+                    <th>Цвет</th>
+                    <th>Вес</th>
+                    <th>Возраст</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for animal in animals %}
+                <tr>
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.type }}</td>
+                    <td>{{ animal.color }}</td>
+                    <td>{{ animal.weight }} кг</td>
+                    <td>{{ animal.age }} год(а)</td>
+                    <td>{{ animal.description }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">Нет записей.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <a href="{% url 'login' %}">Вход</a> | <a href="{% url 'register' %}">Регистрация</a>
+    </div>
+</body>
+</html>
